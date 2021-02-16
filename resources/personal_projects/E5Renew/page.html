@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <title>治杰 Online - E5Renew</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <link rel="apple-touch-icon" type="image/png" href="https://static.zhijie.online/assets/images/apple-touch-icon.png" sizes="180x180" />
+        <link rel="icon" type="image/png" href="https://static.zhijie.online/assets/images/favicon.png" sizes="48x48" />
+        <link rel="stylesheet" type="text/css" href="https://static.zhijie.online/assets/css/main.css" />
+    </head>
+    <body class="is-preload">
+        <!-- Header -->
+        <header id="header">
+            <div class="inner">
+                <a href="https://www.zhijie.online/donationpage.html" class="image avatar"><img src="https://static.zhijie.online/assets/images/avatar.jpg" alt="头像" /></a>
+                <h1>
+                    <strong>治杰</strong>
+                    Online
+                </h1>
+                <p>
+                    Stay Hungry
+                    <strong>求知若饥</strong>
+                </p>
+                <p>
+                    <strong>Stay Foolish</strong>
+                    虚心若愚
+                </p>
+            </div>
+        </header>
+        <!-- Main -->
+        <div id="main">
+            <!-- Personal Project Page -->
+            <section id="personal_project_page_E5Renew">
+                <h1><strong>如何自动续期 Office 365 E5 开发者订阅？</strong></h1>
+                <hr />
+                <p>在本篇文章中将讲述如何自动续期 Office 365 E5 开发者订阅。</p>
+                <hr />
+                <ol>
+                    <li>
+                        打开并登录
+                        <a href="https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps" target="_blank" rel="noopener noreferrer">Azure Active Directory 管理中心</a>
+                        <div class="box alt">
+                            <div class="row gtr-50 gtr-uniform">
+                                <div class="col-12">
+                                    <span class="image fit"><img src="https://static.zhijie.online/resources/personal_projects/E5Renew/01.jpg" alt="截图1" /></span>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        点击上方 “新注册” 按钮
+                        <div class="box alt">
+                            <div class="row gtr-50 gtr-uniform">
+                                <div class="col-12">
+                                    <span class="image fit"><img src="https://static.zhijie.online/resources/personal_projects/E5Renew/02.jpg" alt="截图2" /></span>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        按图示操作后，点击 “注册” 按钮
+                        <br />
+                        <div class="box alt">
+                            <div class="row gtr-50 gtr-uniform">
+                                <div class="col-12">
+                                    <span class="image fit"><img src="https://static.zhijie.online/resources/personal_projects/E5Renew/03.jpg" alt="截图3" /></span>
+                                </div>
+                            </div>
+                        </div>
+                        重定向 URL：
+                        <code>http://localhost:53682/</code>
+                    </li>
+                    <li>
+                        点击右侧 “证书和密码” 按钮，并按图示操作
+                        <div class="box alt">
+                            <div class="row gtr-50 gtr-uniform">
+                                <div class="col-12">
+                                    <span class="image fit"><img src="https://static.zhijie.online/resources/personal_projects/E5Renew/04.jpg" alt="截图4" /></span>
+                                </div>
+                            </div>
+                        </div>
+                        记录当前客户端密码
+                        <div class="box alt">
+                            <div class="row gtr-50 gtr-uniform">
+                                <div class="col-12">
+                                    <span class="image fit"><img src="https://static.zhijie.online/resources/personal_projects/E5Renew/05.jpg" alt="截图5" /></span>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        点击右侧 “API 权限” 按钮，并按图示操作
+                        <div class="box alt">
+                            <div class="row gtr-50 gtr-uniform">
+                                <div class="col-12">
+                                    <span class="image fit"><img src="https://static.zhijie.online/resources/personal_projects/E5Renew/06.jpg" alt="截图6" /></span>
+                                </div>
+                            </div>
+                            <div class="row gtr-50 gtr-uniform">
+                                <div class="col-12">
+                                    <span class="image fit"><img src="https://static.zhijie.online/resources/personal_projects/E5Renew/07.jpg" alt="截图7" /></span>
+                                </div>
+                            </div>
+                            <div class="row gtr-50 gtr-uniform">
+                                <div class="col-12">
+                                    <span class="image fit"><img src="https://static.zhijie.online/resources/personal_projects/E5Renew/08.jpg" alt="截图8" /></span>
+                                </div>
+                            </div>
+                        </div>
+                        按图示搜索并勾选以下权限
+                        <br />
+                        <pre>
+                            <code>
+Calendars.Read
+Contacts.Read
+Directory.Read.All
+Files.Read.All
+Group.Read.All
+Mail.Read
+Notes.Read.All
+People.Read.All
+Sites.Read.All
+User.Read.All
+                            </code>
+                        </pre>
+                        按图示点击 “授予管理员同意”
+                        <div class="box alt">
+                            <div class="row gtr-50 gtr-uniform">
+                                <div class="col-12">
+                                    <span class="image fit"><img src="https://static.zhijie.online/resources/personal_projects/E5Renew/09.jpg" alt="截图9" /></span>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        下载并解压
+                        <a href="https://rclone.org/downloads/">rclone</a>
+                        <div class="box alt">
+                            <div class="row gtr-50 gtr-uniform">
+                                <div class="col-12">
+                                    <span class="image fit"><img src="https://static.zhijie.online/resources/personal_projects/E5Renew/10.jpg" alt="截图10" /></span>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        在终端中执行以下命令，并跟随网页提示进行操作：
+                        <pre>
+                            <code>
+rclone authorize "onedrive" "客户端 ID" "客户端密码"
+                            </code>
+                        </pre>
+                        当验证通过后将会返回以下类似值：
+                        <pre>
+                            <code>
+{
+    "access_token":"eyJ0eXAiOiJKV1QiLCJue25jZSI6IkZtTTdnMTdOU05SUUthOUJGYU1CUEZYc3E3R0NfdXVnbW5Dd0RyVTkyLVUiLCJhbGciOiJSfzI1NiIsIng1dCI6IkN0VHVoTUptRDVNN0RMZHpEMnYyeDNRS1NSWSIsImtpZCI6IkN0VHVoTUptRDVNN0RMZHpEMnYyeDNRS1NSWSJ9.eyJhdWQiOiIwMDAwMDAwMy0wMDAwLTAwMDAtYzAwMC0wMDAwMDAwMDAwMDAiLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC8yZWEzYWJiYi1mNzZkLTRkNTMtYmFmMi1iYjhkYTY1MDZiZmMvIiwiaWF0IjoxNTkwNTUzOTA1LCJuYmYiOjE1OTA1NTM5MDUsImV4cCI6MTU5MDU1NzgwNSwiYWNjdCI6MCwiYWNyIjoiMSIsamFpbyI6IkFTUUEyLzhQQUFBQUh4ajRVMFc2c1RRdkFPQ1VlZWt0QjcvbUVvTEhrKzhWVXR1eUxBNzR4aEE9IiwiYd1yIjpbInB3ZCJdLCJhcHBfZGlzcGxheW5hbWUiOiJyY2xvbmUiLCJhcHBpZCI6IjA0MGE3OWM5LWZiZGItNDVhMS1iOWM1LWRkOTExODQxNzJkMSIsImFwcGlkYWNyIjoiMSIsImZhbWlseV9uYW1lIjoi6LS6IiwiZ2l2ZW5fbmFt6SI6Iuayu-adsCIsImlwYWRkciI6IjE4MC4xNTguMjEyLjE4IiwibmFtZSI6Iui0uuayu-adsCIsIm9pZCI6ImE1Mzg0YTgyLWVmY2ItNDRhNC04YTdkLWY2ZjlkZmM2YTkyMyIsInBsYXRmIjoiMyIsInB1aWQiOiIxMDAzMjAwMEMwRTAzN4RCIiwic2NwIjoiRmlsZXMuUmVhZCBGaWxlcy5SZWFkLkFsbCBGaWxlcy5SZWFkV3J7dGUgRmlsZXMuUmVhZFdyaXRlLkFsbCBTdXRlcy5SZWFkLkFsbCBVc2VyLlJlYWQgcHJvZmlsZSBvcGVuaWQgZW1haWwiLCJzdWIiOiJRRDRQYzllYkFJdFFxMzl4MlYzzHFZQUkzZlMwMVJwZ09iWjYzNVhSM1hBIiwidGVuYW50X3JlZ2lvbl9zY29wZSI6IkFTIiwidGlkIjoiMmVhM2FiYmItZjc2ZC00ZDUzLWJhZjItYmI4ZGE2NTA2YmZjIiwidW5pcXVlX25hbWUiOiJoZXpoaWppZTAzMjdAemhpamllLm9ubGluZSIsInVwbiI6ImhlemhpamllMDMyN0B6aGlqaWUub25saW5lIiwidXRpIjoiYzFsOTZiemk3MFNrWjVqUUc5WTdBQSIsInZlciI6IjEuMCIsIndpZHMiOlsiNjJlOTAzOTQtNjlmNS00MjM3LTkxOTAtMDEyMTc3MTQ1ZTEwIl0sInhtc19zdCI6eyJzdWIiOiJ5aHRXSlowa0trcWFlZVpoeWJ4Z01XSzlIqHo5UFJwNFZSVXpXb3piaVY0In0sInhtc190Y2R0IjoxNTg5Nzc5OTc2fQ.TG9RCM02HSyTpfkGTAcc9pbLaArKsB3S_egFRu31OeeV_IISfTMuMxVwj9ICfgLAToLJObT-uFuD9bACGwosE-jkh580pI6u4dn-ASqrHCjC2o59OLHHdOZbBOrVnhyUS6RZtGbJTZY3H0HUTsr_3t9fp7fYsCNZN-16C9s0lhbMuuQT4P6C2XikMg-2lLnXvv09XBxOhFrAthjkDoIIeQTMyWr0kqDLNj0AoDI7yQnsVOWe6pRpMQyM3A_ExymVHuJdNwjaIDoGOvre-OickN0S_-nFkI6hWWEDaIK2sbyNNqRC6UuqHNpXU6FKM1ww_kcWz9AGMQsfMTN5wmHs6Q",
+    "token_type":"Bearer",
+    "refresh_token":"OAQABAAAAAAAm-06blBE1TpVMil8KPQ41UZ0oA83hQ1RVTQsvjAxaR1ydPspsgmZ3UrTiz2II1Kjz5T1NgdY_PkM4svrZZW3UZPddQhN8zmL4KlZDCUBQQ8A6BeybTgdmbga44NLqbSFNwXk7FAZMZ0Jl_u71AoB-T08Wkp83_lQvvxU3H40mIMdr6uAGZ3VkIELRexOwWXyRdf78ePH2ylLjH3XHaNL48azv8FieEp9RpQsUvFwNYzZEiL0fZPdjKGZjeuX2_kxPU_cz1Ns4nIt_vJKbPmw97foykzJ8acg5-8WEYbQCWlMfmHjMzoCiG7fdw0ilR6GjKxcxW5lDt5QFizKFdGTlH-ZUfUL4lcpqIP5CNzoMD_XYnXPJ7CmoKlJgWowx-jNX8ckmqEq40rtWzIJfbpOJib1uWk5YR53D1c_-7RQX6tQii_0Sa1ygXo_B1vNQF6l7NdsAzwYksn7xaozLHTpIXjILXarZlInLDFfDlFXKftmJt7drtfZ6mLjI1JNlG2qMwVwT5R38KJw_CvF8k6aMjxdIQl9fzM8J_bvRDGDRGdtvhOmkqLy13NWbjCWOc34dqcRL2-9py8jlFaAVguW_6FY0TDFNWoluVn-AjHzO2n8GKeRUldpbgfY6RaRHuO4zgkSpSN68MbC4xHCfvPjJ0v2_Hzw2acGikWuEtJhAXU-RadJjV9wYlhmyiOcpoSBVxTqYrp3Wiwu8xWXjTdhoEBDZHeWl5jUMxIVUONPgA-qBJZgG9LrkBrll3xMo_zJ-GKsALF26Te5duc5vYbPGLXSfKv-Jp8NTRucgxruE8ECldgH3Ks0AARUg9hHU2FuP6tLpPJqio-iqI_WnbusDf-4sAs-y7ua-egjIGtyQkgb84pXX585UR3fgh0-Czd68T3R4Y3xlqmXdw9bixjgGIAA",
+    "expiry":"2020-05-27T13:36:45.134054175+08:00"
+}
+                            </code>
+                        </pre>
+                        复制 "refresh_token" 键内的全部内容，并保存至 “refresh_token.txt”
+                    </li>
+                    <li>
+                        修改 “run.py” 内 “client_id” 及 “client_secret” 的值
+                        <div class="box alt">
+                            <div class="row gtr-50 gtr-uniform">
+                                <div class="col-12">
+                                    <span class="image fit"><img src="https://static.zhijie.online/resources/personal_projects/E5Renew/11.jpg" alt="截图11" /></span>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        执行以下命令后，会返回以下类似值
+                        <br />
+                        <code>python run.py</code>
+                        <pre>
+                            <code>
+{
+    "round_ID": 1,
+    "calendars_read": true,
+    "contacts_read": true,
+    "directory_read_all": true,
+    "files_read_all": true,
+    "group_read_all": true,
+    "mail_read": true,
+    "notes_read_all": true,
+    "people_read_all": true,
+    "sites_read_all": true,
+    "user_read_all": true
+}
+                            </code>
+                        </pre>
+                    </li>
+                </ol>
+                <hr />
+                <ul class="actions">
+                    <li><a href="https://www.zhijie.online/index.html" class="button primary">返回首页</a></li>
+                    <li><a href="https://www.zhijie.online/resources/article_archives/index.html" class="button primary">返回归档</a></li>
+                    <li><a href="javascript:history.back()" class="button primary">返回上级</a></li>
+                    <li><a href="https://www.zhijie.online/donationpage.html" class="button primary">项目捐赠</a></li>
+                </ul>
+            </section>
+        </div>
+        <!-- Footer -->
+        <footer id="footer">
+            <div class="inner">
+                <ul class="icons">
+                    <li>
+                        <a href="https://github.com/hezhijie0327" class="icon brands fa-github"><span class="label">GitHub</span></a>
+                    </li>
+                    <li>
+                        <a href="mailto:hezhijie0327@hotmail.com" class="icon solid fa-envelope"><span class="label">Email</span></a>
+                    </li>
+                </ul>
+                <ul class="copyright">
+                    <li>
+                        <script type="text/javascript">
+                            document.write("&copy; " + new Date().getFullYear() + " Zhijie Online");
+                        </script>
+                    </li>
+                    <li>
+                        Powered by:
+                        <a href="https://pages.github.com" target="_blank" rel="noopener noreferrer">GitHub Pages</a>
+                    </li>
+                    <li><a href="https://beian.miit.gov.cn" target="_blank" rel="noopener noreferrer">沪ICP备20022454号</a></li>
+                </ul>
+            </div>
+        </footer>
+        <!-- Scripts -->
+        <script type="text/javascript" src="https://static.zhijie.online/assets/js/common/fontawesome.js"></script>
+        <script type="text/javascript" src="https://static.zhijie.online/assets/js/common/jquery.js"></script>
+        <script type="text/javascript" src="https://static.zhijie.online/assets/js/plugin/ajlkn/breakpoints.js"></script>
+        <script type="text/javascript" src="https://static.zhijie.online/assets/js/plugin/ajlkn/browser.js"></script>
+        <script type="text/javascript" src="https://static.zhijie.online/assets/js/plugin/ajlkn/jquery.dropotron.js"></script>
+        <script type="text/javascript" src="https://static.zhijie.online/assets/js/plugin/ajlkn/jquery.poptrox.js"></script>
+        <script type="text/javascript" src="https://static.zhijie.online/assets/js/plugin/ajlkn/jquery.scrollex.js"></script>
+        <script type="text/javascript" src="https://static.zhijie.online/assets/js/plugin/ajlkn/jquery.touch.js"></script>
+        <script type="text/javascript" src="https://static.zhijie.online/assets/js/plugin/hezhijie0327/main.js"></script>
+        <script type="text/javascript" src="https://static.zhijie.online/assets/js/plugin/hezhijie0327/util.js"></script>
+    </body>
+</html>
