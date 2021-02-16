@@ -1,4 +1,4 @@
-// Current Version: 1.0.0
+// Current Version: 1.0.1
 // Description: Using Cloudflare Workers to map and mirror hezhijie0327's repos.
 
 addEventListener("fetch", (event) => {
@@ -12,14 +12,14 @@ async function handleRequest(request) {
     var response = "";
     var response_archive_release = await fetch("https://github.com/hezhijie0327/" + url);
     var response_raw = await fetch("https://raw.githubusercontent.com/hezhijie0327/" + url);
-    if (response_archive_release.status == 200) {
-        if (path[2] == "archive" || (path[2] == "releases" && path[3] == "download")) {
+    if (response_archive_release.status === 200) {
+        if (path[2] === "archive" || (path[2] === "releases" && path[3] === "download")) {
             response = response_archive_release;
         }
-    } else if (response_raw.status == 200) {
+    } else if (response_raw.status === 200) {
         response = response_raw;
     }
-    if (response != "") {
+    if (response !== "") {
         return new Response(response.body, {
             status: 200,
             headers: response.headers,
