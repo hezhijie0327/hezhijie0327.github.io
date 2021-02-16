@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <title>治杰 Online - Ubuntu 做软路由系统教程</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <link rel="apple-touch-icon" type="image/png" href="https://static.zhijie.online/assets/images/apple-touch-icon.png" sizes="180x180" />
+        <link rel="icon" type="image/png" href="https://static.zhijie.online/assets/images/favicon.png" sizes="48x48" />
+        <link rel="stylesheet" type="text/css" href="https://static.zhijie.online/assets/css/main.css" />
+    </head>
+    <body class="is-preload">
+        <!-- Header -->
+        <header id="header">
+            <div class="inner">
+                <a href="https://www.zhijie.online/donationpage.html" class="image avatar"><img src="https://static.zhijie.online/assets/images/avatar.jpg" alt="头像" /></a>
+                <h1>
+                    <strong>治杰</strong>
+                    Online
+                </h1>
+                <p>
+                    Stay Hungry
+                    <strong>求知若饥</strong>
+                </p>
+                <p>
+                    <strong>Stay Foolish</strong>
+                    虚心若愚
+                </p>
+            </div>
+        </header>
+        <!-- Main -->
+        <div id="main">
+            <!-- Personal Blog Page -->
+            <section id="personal_blog_page_2020_Ubuntu做软路由系统教程">
+                <h1><strong>2020年07月09日 - Ubuntu 做软路由系统教程</strong></h1>
+                <hr />
+                <p>本篇文章将讲述如何在 Ubuntu 环境中配置软路由系统。</p>
+                <hr />
+                <p>
+                    系统环境：Ubuntu Desktop 20.04 LTS
+                    <br />
+                    所需软件：AdGuard Home，UFW
+                </p>
+                <hr />
+                <ol>
+                    <li>
+                        进入 “设置” 关闭所有网卡的 “自动连接”
+                        <div class="box alt">
+                            <div class="row gtr-50 gtr-uniform">
+                                <div class="col-12">
+                                    <span class="image fit"><img src="https://static.zhijie.online/resources/personal_blogs/2020/images/Ubuntu做软路由系统教程/01.jpg" alt="截图1" /></span>
+                                </div>
+                            </div>
+                            <div class="row gtr-50 gtr-uniform">
+                                <div class="col-12">
+                                    <span class="image fit"><img src="https://static.zhijie.online/resources/personal_blogs/2020/images/Ubuntu做软路由系统教程/02.jpg" alt="截图2" /></span>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        编辑 /etc/netplan 文件
+                        <br />
+                        <div class="box alt">
+                            <div class="row gtr-50 gtr-uniform">
+                                <div class="col-12">
+                                    <span class="image fit"><img src="https://static.zhijie.online/resources/personal_blogs/2020/images/Ubuntu做软路由系统教程/03.jpg" alt="截图3" /></span>
+                                </div>
+                                <div class="col-12">
+                                    <span class="image fit"><img src="https://static.zhijie.online/resources/personal_blogs/2020/images/Ubuntu做软路由系统教程/04.jpg" alt="截图4" /></span>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        编辑 /etc/ppp/options 文件
+                        <br />
+                        <div class="box alt">
+                            <div class="row gtr-50 gtr-uniform">
+                                <div class="col-12">
+                                    <span class="image fit"><img src="https://static.zhijie.online/resources/personal_blogs/2020/images/Ubuntu做软路由系统教程/05.jpg" alt="截图5" /></span>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        编辑 /etc/sysctl.conf 文件
+                        <br />
+                        <div class="box alt">
+                            <div class="row gtr-50 gtr-uniform">
+                                <div class="col-12">
+                                    <span class="image fit"><img src="https://static.zhijie.online/resources/personal_blogs/2020/images/Ubuntu做软路由系统教程/06.jpg" alt="截图6" /></span>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        使用 nmcli 创建 PPPOE 拨号规则
+                        <div class="box alt">
+                            <div class="row gtr-50 gtr-uniform">
+                                <div class="col-12">
+                                    <span class="image fit"><img src="https://static.zhijie.online/resources/personal_blogs/2020/images/Ubuntu做软路由系统教程/07.jpg" alt="截图7" /></span>
+                                </div>
+                                <div class="col-12">
+                                    <span class="image fit"><img src="https://static.zhijie.online/resources/personal_blogs/2020/images/Ubuntu做软路由系统教程/08.jpg" alt="截图8" /></span>
+                                </div>
+                                <div class="col-12">
+                                    <span class="image fit"><img src="https://static.zhijie.online/resources/personal_blogs/2020/images/Ubuntu做软路由系统教程/09.jpg" alt="截图9" /></span>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        将 AdGuard Home 作为 DHCP 及 DNS 服务器（
+                        <a href="https://www.zhijie.online/resources/personal_projects/AGHChineseRelease/page.html">安装教程</a>
+                        ）
+                        <div class="box alt">
+                            <div class="row gtr-50 gtr-uniform">
+                                <div class="col-12">
+                                    <span class="image fit"><img src="https://static.zhijie.online/resources/personal_blogs/2020/images/Ubuntu做软路由系统教程/10.jpg" alt="截图10" /></span>
+                                </div>
+                                <div class="col-12">
+                                    <span class="image fit"><img src="https://static.zhijie.online/resources/personal_blogs/2020/images/Ubuntu做软路由系统教程/11.jpg" alt="截图11" /></span>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        配置 UFW 防火墙
+                        <div class="box alt">
+                            <div class="row gtr-50 gtr-uniform">
+                                <div class="col-12">
+                                    <span class="image fit"><img src="https://static.zhijie.online/resources/personal_blogs/2020/images/Ubuntu做软路由系统教程/12.jpg" alt="截图12" /></span>
+                                </div>
+                            </div>
+                            <div class="row gtr-50 gtr-uniform">
+                                <div class="col-12">
+                                    <span class="image fit"><img src="https://static.zhijie.online/resources/personal_blogs/2020/images/Ubuntu做软路由系统教程/13.jpg" alt="截图13" /></span>
+                                </div>
+                            </div>
+                            <div class="row gtr-50 gtr-uniform">
+                                <div class="col-12">
+                                    <span class="image fit"><img src="https://static.zhijie.online/resources/personal_blogs/2020/images/Ubuntu做软路由系统教程/14.jpg" alt="截图14" /></span>
+                                </div>
+                            </div>
+                            <div class="row gtr-50 gtr-uniform">
+                                <div class="col-12">
+                                    <span class="image fit"><img src="https://static.zhijie.online/resources/personal_blogs/2020/images/Ubuntu做软路由系统教程/15.jpg" alt="截图15" /></span>
+                                </div>
+                            </div>
+                            <div class="row gtr-50 gtr-uniform">
+                                <div class="col-12">
+                                    <span class="image fit"><img src="https://static.zhijie.online/resources/personal_blogs/2020/images/Ubuntu做软路由系统教程/16.jpg" alt="截图16" /></span>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>重启即可</li>
+                </ol>
+                <hr />
+                <p>2020年07月13日 11:57</p>
+                <hr />
+                <ul class="actions">
+                    <li><a href="https://www.zhijie.online/index.html" class="button primary">返回首页</a></li>
+                    <li><a href="https://www.zhijie.online/resources/article_archives/index.html" class="button primary">返回归档</a></li>
+                    <li><a href="javascript:history.back()" class="button primary">返回上级</a></li>
+                </ul>
+            </section>
+        </div>
+        <!-- Footer -->
+        <footer id="footer">
+            <div class="inner">
+                <ul class="icons">
+                    <li>
+                        <a href="https://github.com/hezhijie0327" class="icon brands fa-github"><span class="label">GitHub</span></a>
+                    </li>
+                    <li>
+                        <a href="mailto:hezhijie0327@hotmail.com" class="icon solid fa-envelope"><span class="label">Email</span></a>
+                    </li>
+                </ul>
+                <ul class="copyright">
+                    <li>
+                        <script type="text/javascript">
+                            document.write("&copy; " + new Date().getFullYear() + " Zhijie Online");
+                        </script>
+                    </li>
+                    <li>
+                        Powered by:
+                        <a href="https://pages.github.com" target="_blank" rel="noopener noreferrer">GitHub Pages</a>
+                    </li>
+                    <li><a href="https://beian.miit.gov.cn" target="_blank" rel="noopener noreferrer">沪ICP备20022454号</a></li>
+                </ul>
+            </div>
+        </footer>
+        <!-- Scripts -->
+        <script type="text/javascript" src="https://static.zhijie.online/assets/js/common/fontawesome.js"></script>
+        <script type="text/javascript" src="https://static.zhijie.online/assets/js/common/jquery.js"></script>
+        <script type="text/javascript" src="https://static.zhijie.online/assets/js/plugin/ajlkn/breakpoints.js"></script>
+        <script type="text/javascript" src="https://static.zhijie.online/assets/js/plugin/ajlkn/browser.js"></script>
+        <script type="text/javascript" src="https://static.zhijie.online/assets/js/plugin/ajlkn/jquery.dropotron.js"></script>
+        <script type="text/javascript" src="https://static.zhijie.online/assets/js/plugin/ajlkn/jquery.poptrox.js"></script>
+        <script type="text/javascript" src="https://static.zhijie.online/assets/js/plugin/ajlkn/jquery.scrollex.js"></script>
+        <script type="text/javascript" src="https://static.zhijie.online/assets/js/plugin/ajlkn/jquery.touch.js"></script>
+        <script type="text/javascript" src="https://static.zhijie.online/assets/js/plugin/hezhijie0327/main.js"></script>
+        <script type="text/javascript" src="https://static.zhijie.online/assets/js/plugin/hezhijie0327/util.js"></script>
+    </body>
+</html>
