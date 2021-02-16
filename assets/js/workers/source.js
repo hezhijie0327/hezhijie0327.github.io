@@ -1,4 +1,4 @@
-// Current Version: 1.0.2
+// Current Version: 1.0.3
 // Description: Using Cloudflare Workers to map and mirror hezhijie0327's repos.
 
 addEventListener("fetch", (event) => {
@@ -77,21 +77,23 @@ async function handleRequest(request) {
                 },
             });
         } else if (url.includes(".js")) {
-            return new Response(response.body, {
-                status: 200,
-                headers: {
-                    "Access-Control-Allow-Origin": "*",
-                    "content-type": "text/javascript;charset=UTF-8",
-                },
-            });
-        } else if (url.includes(".json")) {
-            return new Response(response.body, {
-                status: 200,
-                headers: {
-                    "Access-Control-Allow-Origin": "*",
-                    "content-type": "application/json;charset=UTF-8",
-                },
-            });
+            if (url.includes(".json")) {
+                return new Response(response.body, {
+                    status: 200,
+                    headers: {
+                        "Access-Control-Allow-Origin": "*",
+                        "content-type": "application/json;charset=UTF-8",
+                    },
+                });
+            } else {
+                return new Response(response.body, {
+                    status: 200,
+                    headers: {
+                        "Access-Control-Allow-Origin": "*",
+                        "content-type": "text/javascript;charset=UTF-8",
+                    },
+                });
+            }
         } else if (url.includes(".png")) {
             return new Response(response.body, {
                 status: 200,
