@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh">
     <head>
-        <title>治杰 Online - ${STATUS}></title>
+        <title>治杰 Online - ${STATUS}</title>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
         <link rel="apple-touch-icon" type="image/png" href="https://static.zhijie.online/assets/images/apple-touch-icon.png" sizes="180x180" />
@@ -33,7 +33,11 @@
             <section id="${STATUS}_page">
                 <h1><strong>${COMMIT}</strong></h1>
                 <hr />
-                <p>${REASON}</p>
+                <p>
+                    ${REASON}
+                    <br />
+                    ${DETAIL}
+                </p>
                 <hr />
                 <ul class="actions">
                     <li><a href="https://www.zhijie.online/index.html" class="button primary">返回首页</a></li>
