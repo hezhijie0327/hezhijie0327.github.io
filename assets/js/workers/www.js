@@ -1,4 +1,4 @@
-// Current Version: 1.0.2
+// Current Version: 1.0.3
 // Description: Using Cloudflare Workers to deploy hezhijie0327/hezhijie0327.github.io to www.zhijie.online.
 
 addEventListener("fetch", (event) => {
@@ -32,7 +32,7 @@ async function handleRequest(request) {
         } else {
             var response = await fetch("https://raw.githubusercontent.com/hezhijie0327/hezhijie0327.github.io/main/403.html");
             response = await response.text();
-            return new Response(response.replace(/\<\!\-\-\ REASON\ \-\-\>/gim, '<script type="text/javascript">document.write(window.location.href);</script>'), {
+            return new Response(response.replace(/\<\!\-\-\ REASON\ \-\-\>/gim, "您无权访问此处：" + '<script type="text/javascript">document.write(window.location.href);</script>'), {
                 status: 403,
                 headers: {
                     "Access-Control-Allow-Origin": "*",
