@@ -1,4 +1,4 @@
-// Current Version: 1.0.5
+// Current Version: 1.0.6
 // Description: Using Cloudflare Workers to deploy hezhijie0327/hezhijie0327.github.io's static files and redirect the files from jsDelivr.
 
 addEventListener("fetch", (event) => {
@@ -52,7 +52,7 @@ async function handleRequest(request) {
                     response
                         .replace(/\$\{COMMIT\}/gim, "哎呀！请在此处止步哟～")
                         .replace(/\$\{DETAIL\}/gim, "您无权访问：" + '<script type="text/javascript">document.write(window.location.href);</script>')
-                        .replace(/\$\{STATUS\}/gim, "404"),
+                        .replace(/\$\{STATUS\}/gim, "403"),
                     {
                         status: 403,
                         headers: {
