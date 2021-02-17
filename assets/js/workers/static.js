@@ -1,4 +1,4 @@
-// Current Version: 1.0.4
+// Current Version: 1.0.5
 // Description: Using Cloudflare Workers to deploy hezhijie0327/hezhijie0327.github.io's static files and redirect the files from jsDelivr.
 
 addEventListener("fetch", (event) => {
@@ -12,14 +12,21 @@ async function handleRequest(request) {
     var response_jsdelivr_gh = await fetch("https://cdn.jsdelivr.net/gh/" + url);
     var response_jsdelivr_npm = await fetch("https://cdn.jsdelivr.net/npm/" + url);
     if (url === "" || (response_hezhijie0327.status !== 200 && response_jsdelivr_gh.status !== 200 && response_jsdelivr_npm.status !== 200)) {
-        var response = await fetch("https://raw.githubusercontent.com/hezhijie0327/hezhijie0327.github.io/main/404.html");
-        return new Response(response.body, {
-            status: 404,
-            headers: {
-                "Access-Control-Allow-Origin": "*",
-                "content-type": "text/html;charset=UTF-8",
-            },
-        });
+        var response = await fetch("https://raw.githubusercontent.com/hezhijie0327/hezhijie0327.github.io/main/status.html");
+        response = await response.text();
+        return new Response(
+            response
+                .replace(/\$\{COMMIT\}/gim, "哎呀！网页走丢啦～")
+                .replace(/\$\{DETAIL\}/gim, "您无法访问：" + '<script type="text/javascript">document.write(window.location.href);</script>')
+                .replace(/\$\{STATUS\}/gim, "404"),
+            {
+                status: 404,
+                headers: {
+                    "Access-Control-Allow-Origin": "*",
+                    "content-type": "text/html;charset=UTF-8",
+                },
+            }
+        );
     } else {
         if (response_hezhijie0327.status === 200) {
             if (url.includes(".css")) {
@@ -39,15 +46,21 @@ async function handleRequest(request) {
                     },
                 });
             } else if (url.includes(".html")) {
-                var response = await fetch("https://raw.githubusercontent.com/hezhijie0327/hezhijie0327.github.io/main/403.html");
+                var response = await fetch("https://raw.githubusercontent.com/hezhijie0327/hezhijie0327.github.io/main/status.html");
                 response = await response.text();
-                return new Response(response.replace(/\<\!\-\-\ REASON\ \-\-\>/gim, "您无权访问此处：" + '<script type="text/javascript">document.write(window.location.href);</script>'), {
-                    status: 403,
-                    headers: {
-                        "Access-Control-Allow-Origin": "*",
-                        "content-type": "text/html;charset=UTF-8",
-                    },
-                });
+                return new Response(
+                    response
+                        .replace(/\$\{COMMIT\}/gim, "哎呀！请在此处止步哟～")
+                        .replace(/\$\{DETAIL\}/gim, "您无权访问：" + '<script type="text/javascript">document.write(window.location.href);</script>')
+                        .replace(/\$\{STATUS\}/gim, "404"),
+                    {
+                        status: 403,
+                        headers: {
+                            "Access-Control-Allow-Origin": "*",
+                            "content-type": "text/html;charset=UTF-8",
+                        },
+                    }
+                );
             } else if (url.includes(".jpg")) {
                 return new Response(response_hezhijie0327.body, {
                     status: 200,
