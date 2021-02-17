@@ -1,4 +1,4 @@
-// Current Version: 1.0.3
+// Current Version: 1.0.4
 // Description: Using Cloudflare Workers to map and mirror hezhijie0327's repos.
 
 addEventListener("fetch", (event) => {
@@ -6,15 +6,31 @@ addEventListener("fetch", (event) => {
 });
 
 async function handleRequest(request) {
+    const clone_url = new Array("github.com.cnpmjs.org", "hub.fastgit.org");
     let url = request.url.substr(8);
     path = url.split("/");
     url = url.substr(url.indexOf("/") + 1);
     var response = "";
-    var response_archive_release = await fetch("https://github.com/hezhijie0327/" + url);
+    var response_archive_blob_clone_edit_raw_release = await fetch("https://github.com/hezhijie0327/" + url);
     var response_raw = await fetch("https://raw.githubusercontent.com/hezhijie0327/" + url);
-    if (response_archive_release.status === 200) {
-        if (path[2] === "archive" || (path[2] === "releases" && path[3] === "download")) {
-            response = response_archive_release;
+    if (response_archive_blob_clone_edit_raw_release.status === 200) {
+        if (path[1].endsWith(".git")) {
+            return Response.redirect("https://" + clone_url[Math.floor(Math.random() * clone_url.length)] + "/hezhijie0327/" + url, 302);
+        } else {
+            if (path[2] === "archive" || (path[2] === "releases" && path[3] === "download")) {
+                response = response_archive_blob_clone_edit_raw_release;
+            } else if (path[2] === "blob" || path[2] === "edit" || path[2] === "raw") {
+                for (var i = 0; i < path.length; i++) {
+                    if (i === 0) {
+                        url = path[i];
+                    } else if (i === 2) {
+                        url = url;
+                    } else {
+                        url = url + "/" + path[i];
+                    }
+                }
+                return Response.redirect("https://" + url, 301);
+            }
         }
     } else if (response_raw.status === 200) {
         response = response_raw;
