@@ -1,4 +1,4 @@
-// Current Version: 1.0.6
+// Current Version: 1.0.7
 // Description: Using Cloudflare Workers to map and mirror hezhijie0327's repos.
 
 addEventListener("fetch", (event) => {
@@ -6,7 +6,7 @@ addEventListener("fetch", (event) => {
 });
 
 async function handleRequest(request) {
-    const clone_url = new Array("github.com.cnpmjs.org", "hub.fastgit.org");
+    const clone_url = ["github.com.cnpmjs.org", "hub.fastgit.org"];
     let url = request.url.substr(8);
     path = url.split("/");
     url = url.substr(url.indexOf("/") + 1);
