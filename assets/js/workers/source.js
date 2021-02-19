@@ -1,4 +1,4 @@
-// Current Version: 1.0.7
+// Current Version: 1.0.8
 // Description: Using Cloudflare Workers to map and mirror hezhijie0327's repos.
 
 addEventListener("fetch", (event) => {
@@ -6,7 +6,10 @@ addEventListener("fetch", (event) => {
 });
 
 async function handleRequest(request) {
-    const clone_url = ["github.com.cnpmjs.org", "hub.fastgit.org"];
+    const mirror = {
+        private: [],
+        public: ["github.com.cnpmjs.org", "hub.fastgit.org"],
+    };
     let url = request.url.substr(8);
     path = url.split("/");
     url = url.substr(url.indexOf("/") + 1);
@@ -15,7 +18,9 @@ async function handleRequest(request) {
     var response_raw = await fetch("https://raw.githubusercontent.com/hezhijie0327/" + url);
     if (response_archive_blob_clone_edit_raw_release.status === 200) {
         if (path[1].endsWith(".git")) {
-            return Response.redirect("https://" + clone_url[Math.floor(Math.random() * clone_url.length)] + "/hezhijie0327/" + url, 302);
+            var mirror_url = mirror.private.concat(mirror.public);
+            var redirect = mirror_url[Math.floor(Math.random() * mirror_url.length)];
+            return Response.redirect("https://" + redirect + "/hezhijie0327/" + url, 302);
         } else {
             if (path[2] === "archive" || (path[2] === "releases" && path[3] === "download")) {
                 response = response_archive_blob_clone_edit_raw_release;
