@@ -1,4 +1,4 @@
-// Current Version: 1.0.9
+// Current Version: 1.1.0
 // Description: Using Cloudflare Workers to deploy hezhijie0327/hezhijie0327.github.io's static files and redirect the files from jsDelivr.
 
 addEventListener("fetch", (event) => {
@@ -46,7 +46,7 @@ async function handleRequest(request) {
                     }
                 );
             } else {
-                if (response_hezhijie0327.headers.get("Content-Length") <= 64 * 1024) {
+                if (response_hezhijie0327.headers.get("Content-Length") <= Math.pow(2, 17)) {
                     if (url.includes(".css")) {
                         return new Response(response_hezhijie0327.body, {
                             status: 200,
