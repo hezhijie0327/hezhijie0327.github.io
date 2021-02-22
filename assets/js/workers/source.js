@@ -1,4 +1,4 @@
-// Current Version: 1.0.8
+// Current Version: 1.0.9
 // Description: Using Cloudflare Workers to map and mirror hezhijie0327's repos.
 
 addEventListener("fetch", (event) => {
@@ -14,31 +14,39 @@ async function handleRequest(request) {
     path = url.split("/");
     url = url.substr(url.indexOf("/") + 1);
     var response = "";
-    var response_archive_blob_clone_edit_raw_release = await fetch("https://github.com/hezhijie0327/" + url);
-    var response_raw = await fetch("https://raw.githubusercontent.com/hezhijie0327/" + url);
-    if (response_archive_blob_clone_edit_raw_release.status === 200) {
-        if (path[1].endsWith(".git")) {
-            var mirror_url = mirror.private.concat(mirror.public);
-            var redirect = mirror_url[Math.floor(Math.random() * mirror_url.length)];
-            return Response.redirect("https://" + redirect + "/hezhijie0327/" + url, 302);
-        } else {
-            if (path[2] === "archive" || (path[2] === "releases" && path[3] === "download")) {
-                response = response_archive_blob_clone_edit_raw_release;
-            } else if (path[2] === "blob" || path[2] === "edit" || path[2] === "raw") {
-                for (var i = 0; i < path.length; i++) {
-                    if (i === 0) {
-                        url = path[i];
-                    } else if (i === 2) {
-                        url = url;
-                    } else {
-                        url = url + "/" + path[i];
-                    }
-                }
-                return Response.redirect("https://" + url, 301);
-            }
+    if (url !== "") {
+        if (url.startsWith("https://")) {
+            return Response.redirect("https://" + path[0] + "/" + url.replace(/^https\:\/\/(((?:codeload)?(?:\.)?github\.com)|(?:raw)?(?:\.)?(githubusercontent\.com))\/hezhijie0327\//gim, ""), 301);
         }
-    } else if (response_raw.status === 200) {
-        response = response_raw;
+        var response_archive_blob_clone_edit_raw_release = await fetch("https://github.com/hezhijie0327/" + url);
+        var response_codeload = await fetch("https://codeload.github.com/hezhijie0327/" + url);
+        var response_raw = await fetch("https://raw.githubusercontent.com/hezhijie0327/" + url);
+        if (response_archive_blob_clone_edit_raw_release.status === 200) {
+            if (path[1].endsWith(".git")) {
+                var mirror_url = mirror.private.concat(mirror.public);
+                var redirect = mirror_url[Math.floor(Math.random() * mirror_url.length)];
+                return Response.redirect("https://" + redirect + "/hezhijie0327/" + url, 302);
+            } else {
+                if (path[2] === "archive" || (path[2] === "releases" && path[3] === "download")) {
+                    response = response_archive_blob_clone_edit_raw_release;
+                } else if (path[2] === "blob" || path[2] === "edit" || path[2] === "raw") {
+                    for (var i = 0; i < path.length; i++) {
+                        if (i === 0) {
+                            url = path[i];
+                        } else if (i === 2) {
+                            url = url;
+                        } else {
+                            url = url + "/" + path[i];
+                        }
+                    }
+                    return Response.redirect("https://" + url, 301);
+                }
+            }
+        } else if (response_codeload.status === 200) {
+            response = response_codeload;
+        } else if (response_raw.status === 200) {
+            response = response_raw;
+        }
     }
     if (response !== "") {
         if (url.includes(".conf") || url.includes(".dockerfile") || url.includes(".txt")) {
