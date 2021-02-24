@@ -1,4 +1,4 @@
-// Current Version: 1.1.0
+// Current Version: 1.1.1
 // Description: Using Cloudflare Workers to deploy hezhijie0327/hezhijie0327.github.io's static files and redirect the files from jsDelivr.
 
 addEventListener("fetch", (event) => {
@@ -8,6 +8,7 @@ addEventListener("fetch", (event) => {
 async function handleRequest(request) {
     let url = request.url.substr(8);
     url = url.substr(url.indexOf("/") + 1);
+    const forced_mirror = false;
     var response_hezhijie0327 = await fetch("https://raw.githubusercontent.com/hezhijie0327/hezhijie0327.github.io/main/" + url);
     var response_jsdelivr_gh = await fetch("https://cdn.jsdelivr.net/gh/" + url);
     var response_jsdelivr_npm = await fetch("https://cdn.jsdelivr.net/npm/" + url);
@@ -46,7 +47,7 @@ async function handleRequest(request) {
                     }
                 );
             } else {
-                if (response_hezhijie0327.headers.get("Content-Length") <= Math.pow(2, 17)) {
+                if (forced_mirror === false && response_hezhijie0327.headers.get("Content-Length") <= Math.pow(2, 18)) {
                     if (url.includes(".css")) {
                         return new Response(response_hezhijie0327.body, {
                             status: 200,
